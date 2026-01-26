@@ -9,20 +9,49 @@ Admin Manage Collections
 
 @section('content')
 
+  <!--COLLECTIONS ACCORDION-->
+<h2>All Current Collections:</h2>
+
+
+<div class="accordion" id="accordionExample">
+    
+    @foreach($collections as $collection)
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$collection->id}}" aria-expanded="true" aria-controls="collapse{{$collection->id}}">
+                {{$collection->collection}} 
+                #{{$collection->collection_id}}
+                (@if($collection->isPublic ==1)
+                  Public
+                  @else 
+                  Private
+                  @endif
+                )
+            </button>
+            </h2>
+            <div id="collapse{{$collection->id}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <strong>Curator: {{$collection->curator}}</strong> 
+                <p>{{$collection->collection_desc}}</p>
+            </div>
+            </div>
+        </div>
+    @endforeach
+  
+</div>
+
+<!--END OF ACCORDION-->
+
+
 <!--COLLECTIONS CRUD -->
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Add Collection</button>
     </li>
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Update Collection</button>
     </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">TBD</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
-    </li>
+
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active border p-2" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
@@ -52,20 +81,24 @@ Admin Manage Collections
                     The collection is securely housed in a restricted digital archive with advanced access controls.</p>
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Title *:</span>
-                    <input type="text" class="form-control" placeholder="Enter the collection title" aria-label="Username" aria-describedby="basic-addon1" name="title" required>
+                    <span class="input-group-text" id="basic-addon1">Title *</span>
+                    <input type="text" class="form-control" placeholder="Enter the collection title" aria-label="Username" name="title" required>
                   </div>
     
                   
                   <div class="input-group mb-3">
-                    <span class="input-group-text">Curator :</span>
-                    <input type="text" class="form-control" placeholder="Enter curator name & title" aria-label="Enter curator name and title" name="curator" >
+                    <span class="input-group-text">Curator *</span>
+                    <input type="text" class="form-control" placeholder="Enter curator name & title" aria-label="Enter curator name and title"  name="curator" required>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Collection ID *</span>
+                    <input type="number" class="form-control" placeholder="Unique Numeric Identifier" aria-label="Enter curator name and title"  name="collection_id" required>
                   </div>
                   
                   <div class="form-text" id="basic-addon4">Collection Description: Write a briew summary of collection</div>
                   <div class="input-group">
-                    <span class="input-group-text">Collection Description*</span>
-                    <textarea class="form-control" aria-label="With textarea"  aria-describedby="basic-addon4" name="text" required></textarea>
+                    <span class="input-group-text">Collection Description *</span>
+                    <textarea class="form-control" aria-label="With textarea" name="text" required></textarea>
                   </div>
                   <div class="input-group mt-2">
                     <input type="submit" class="btn btn-primary">
@@ -78,68 +111,33 @@ Admin Manage Collections
         <p>You can update the collection assigned curator, artifacts list, display image, or published description</p>
         <form method="POST" action="{{route('update.collections')}}">
             @csrf
-            <div class="row mb-3">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Select a Collection :</label>
-              <div class="col-sm-8">
-                
-                <select class="form-select" aria-label="Default select a collection" name="selected" required>
-                    <option value="false">--</option>
-                    @foreach($collections as $collection)
-                        <option value="{{$collection->id}}">{{$collection->collection}}</option>
-                    @endforeach
-                  </select>
-        
-              </div>
-              <button type="submit" class="col-sm-1 btn btn-primary">Update</button>
+            <div class="row m-2 justify-content-evenly align-items-center">
+                <label for="inputEmail3" class="col-sm-2 col-form-label text-end">
+                    Select a Collection :
+                </label>
+
+                <div class="col-sm-6">
+                    <select class="form-select" name="selected" required>
+                        <option value="false">--</option>
+                        @foreach($collections as $collection)
+                            <option value="{{ $collection->id }}">{{ $collection->collection }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="col-sm-2 text-start">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
             </div>
           </form>
         
     </div><!--END OF PROFILE TAB-->
 
-
-
-
-    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
-
-
-
-    <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
   </div>
 
 <!--COLLECTIONS CRUD END-->
 
 
-  <!--COLLECTIONS ACCORDION-->
-<h2>All Current Collections:</h2>
-
-
-<div class="accordion" id="accordionExample">
-    
-    @foreach($collections as $collection)
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$collection->id}}" aria-expanded="true" aria-controls="collapse{{$collection->id}}">
-                {{$collection->collection}} 
-                (@if($collection->isPublic ==1)
-                  Public
-                  @else 
-                  Private
-                  @endif
-                )
-            </button>
-            </h2>
-            <div id="collapse{{$collection->id}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <strong>Curator: {{$collection->curator}}</strong> 
-                <p>{{$collection->collection_desc}}</p>
-            </div>
-            </div>
-        </div>
-    @endforeach
-  
-</div>
-
-<!--END OF ACCORDION-->
 
 
 

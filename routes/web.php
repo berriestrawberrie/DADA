@@ -44,7 +44,7 @@ Route::get('/viewartifact/{art_type}/{artifact_id}', [ArtifactController::class,
 Route::middleware("auth")->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'userDashboard'])->name('users.dashboard');
     Route::get('/enteredby/{user}', [ArtifactController::class, 'savedList'])->name('entered.by');
-
+Route::get('/previewData/{artifact_type}/{token}/{user}', [ArtifactController::class, 'previewForm'])->name('form.preview');
 
     //START NEW ARTIFACT ROUTES
     Route::get('/selectType', [ArtifactController::class, 'typeSelect'])->name('typeselect');
@@ -94,7 +94,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/verifyData', [AdminController::class, 'checkoutData'])->name('checkout.data');
     Route::post('/releaseData', [AdminController::class, 'releaseData'])->name('release.data');
     Route::get('/reviewData/{user}/{artifact_type}/{id}', [AdminController::class, 'reviewData']);
-    Route::get('/previewData/{artifact_type}/{token}/{user}', [ArtifactController::class, 'previewForm'])->name('form.preview');
+    
 
     //ADMIN CERAMIC ROUTES
     Route::post('/validateCeramic/{id}', [CeramicController::class, 'validateCeramic']);

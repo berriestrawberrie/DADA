@@ -4,12 +4,10 @@
 
 @section('content')
 <div class="updatecollectbanner d-flex justify-content-between mx-2">
-<h2>Current Collection Informatin</h2>
-<a href="{{route('collections')}}"><i class="fa-regular fa-share-from-square fs-1 reverse"></i></a>
+<h2>Current Collection Information: #{{$collection[0]['collection_id']}}</h2>
 </div>
 <p><b>Curorated by: </b>{{$collection[0]['curator']}}</p>
 <div class="current-collect d-flex align-items-center">
-    <img src="{{asset('storage/images/picture.png')}}" width="200">
     <div class="collect-title">
         <h3>{{$collection[0]['collection']}}</h3>
         <p>{{$collection[0]['collection_desc']}}</p>
@@ -40,7 +38,7 @@
             <span class="input-group-text">Collection Description</span>
             <textarea class="form-control" aria-label="With textarea"  aria-describedby="basic-addon4" name="text"></textarea>
           </div>
-          <div class="input-group">
+          <div class="input-group mt-2">
             <input type="submit" class="btn btn-primary" value="Update">
           </div>
 

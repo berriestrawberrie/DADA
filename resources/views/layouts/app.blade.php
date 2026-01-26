@@ -14,7 +14,8 @@
     @include('layouts/navbar')
     <!--END OF NAVBAR-->
     
-    <div class="bg-white w-75 w-m-100">
+    <div class="bg-white form-structure">
+            @yield('modal')
         <!--ALERTS-->
         <div class="container ">
             @include('layouts.alerts')
@@ -26,7 +27,7 @@
 
         <!--CONTENT-->
 
-        <div class="position-relative container-fluid p-3">
+        <div class="position-relative  p-3">
             @yield('content')
         </div>
         <!--END OF CONTENT-->

@@ -10,7 +10,7 @@ Ceramic Artifact Entry Form
 @endsection
 
 @section('content')
-
+@include('forms.formkey')
 <form class=" needs-validation" method="POST" action="{{route('save.ceramic')}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->

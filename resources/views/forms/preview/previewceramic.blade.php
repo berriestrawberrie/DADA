@@ -9,9 +9,11 @@ Review Ceramic
 
 @endsection
 
-@section('content')
+@section('modal')
 @include('forms.preview.popup')
+@endsection
 
+@section('content')
 
 <form class=" needs-validation" method="POST" action="{{url('submitCeramic/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
   @csrf
