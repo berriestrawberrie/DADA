@@ -38,8 +38,10 @@ Add Artifact
      
       @for($y=0; $y<count($art_types[$i]);$y++)
       <a href="/getForm/{{$collections[$i]["id"]}}/{{$art_types[$i][$y]}}">
-          <div class="d-flex flex-wrap flex-column align-items-center rounded-3 p-2 " >              
+          <div class="d-flex flex-wrap flex-column align-items-center rounded-3 p-2 " >   
+            @if($art_types[$i][$y]==="ceramic")           
             <button class="btn btn-outline-dark fs-4 text-capitalize">{{$art_types[$i][$y]==="tobacco_pipe"? "Tobacco Pipe" :$art_types[$i][$y]}}</button>
+            @endif
           </div>
         </a>
       @endfor

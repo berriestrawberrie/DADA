@@ -38,7 +38,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item navfont" href="{{route('admin.dashboard')}}">Dashboard</a></li>
-              <li><a class="dropdown-item navfont" href="{{route('collections')}}">Add Collection</a></li>
+              <li><a class="dropdown-item navfont" href="{{route('collections')}}">Collections</a></li>
               <li><a class="dropdown-item navfont" href="{{route('verify.data')}}">Verify Data</a></li>
             </ul>
           </li>

@@ -36,13 +36,18 @@ class AdminController extends Controller
     //ADD A NEW COLLECTION
     public function collectionsPost(Request $request)
     {
-
+        //VERIFY THAT THE COLLECTION ID IS UNIQUE
+        $exists = Collection::where('collection_id', $request->collection_id)->exists();
+        if($exists){
+            return back()->with('error', 'Collection not created: Collection ID# already exists');
+        }
         //USE THE MODEL TO BUILD NEW DATA ENTRY
         $addCollection = new Collection([
             'collection' => $request->title,
             'curator' => $request->curator,
             'collection_desc' => $request->text,
-            'isPublic' => $request->isPublic
+            'isPublic' => $request->isPublic,
+            'collection_id' => $request->collection_id,
         ]);
         //SAVE TO DATABASE
         $addCollection->save();
