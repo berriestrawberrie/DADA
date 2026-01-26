@@ -111,19 +111,23 @@ Admin Manage Collections
         <p>You can update the collection assigned curator, artifacts list, display image, or published description</p>
         <form method="POST" action="{{route('update.collections')}}">
             @csrf
-            <div class="row mb-3">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Select a Collection :</label>
-              <div class="col-sm-8">
-                
-                <select class="form-select" aria-label="Default select a collection" name="selected" required>
-                    <option value="false">--</option>
-                    @foreach($collections as $collection)
-                        <option value="{{$collection->id}}">{{$collection->collection}}</option>
-                    @endforeach
-                  </select>
-        
-              </div>
-              <button type="submit" class="col-sm-1 btn btn-primary">Update</button>
+            <div class="row m-2 justify-content-evenly align-items-center">
+                <label for="inputEmail3" class="col-sm-2 col-form-label text-end">
+                    Select a Collection :
+                </label>
+
+                <div class="col-sm-6">
+                    <select class="form-select" name="selected" required>
+                        <option value="false">--</option>
+                        @foreach($collections as $collection)
+                            <option value="{{ $collection->id }}">{{ $collection->collection }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="col-sm-2 text-start">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
             </div>
           </form>
         
