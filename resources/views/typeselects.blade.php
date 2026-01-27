@@ -10,7 +10,7 @@ Add Artifact
 
 
 @section('content')
-<select id="max" class="d-none"><option selected value="{{count($collections)}}">MaxCollections</option></select>
+<select id="max" class="d-none"><option selected value="{{ $collections->max('id') }}">MaxCollections</option></select>
 
 <h2>1. Select a collection </h2>
 <p>First you must select the collection for the artifact to be added to</p>
@@ -34,7 +34,7 @@ Add Artifact
   <p class="mb-2">Then you must select the type of artifact to add.  </p>
  
     @for($i=0;$i< count($collections); $i++)
-    <div style="display:none;"class="container flex-wrap  justify-content-start position-relative" id="{{$collections[$i]["id"]}}">
+    <div style="display:none;"class="collect container flex-wrap  justify-content-start position-relative" id="{{$collections[$i]["id"]}}">
      
       @for($y=0; $y<count($art_types[$i]);$y++)
       <a href="/getForm/{{$collections[$i]["id"]}}/{{$art_types[$i][$y]}}">

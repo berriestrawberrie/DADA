@@ -15,7 +15,7 @@ Review Ceramic
 
 @section('content')
 
-<form class=" needs-validation" method="POST" action="{{url('submitCeramic/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
+<form id="artifactForm" class=" needs-validation" method="POST" action="{{url('submitCeramic/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
@@ -34,7 +34,10 @@ Review Ceramic
   </fieldset>
 
   <fieldset class="mt-2">
-    <input type="submit" class="btn btn-success" value="Submit Data for Validation">
+       <button class="btn btn-success d-flex justify-content-evenly align-items-center" id="btnSubmit">
+        Submit Data for Validation
+        <span class="loader" id="spinner" style="display:none;"></span>
+      </button>
   </fieldset>
 
 
