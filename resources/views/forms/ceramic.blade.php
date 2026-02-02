@@ -11,7 +11,7 @@ Ceramic Artifact Entry Form
 
 @section('content')
 @include('forms.formkey')
-<form class=" needs-validation" method="POST" action="{{route('save.ceramic')}}" novalidate enctype="multipart/form-data">
+<form class=" needs-validation" method="POST" action="{{route('save.ceramic')}}" id="artifactForm" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
@@ -30,7 +30,10 @@ Ceramic Artifact Entry Form
   </fieldset>
 
   <fieldset class="mt-2">
-    <button class="btn btn-primary" id="btnSubmit">   Save</button>
+    <button class="btn btn-primary d-flex justify-content-evenly align-items-center" id="btnSubmit">
+    Save
+    <span class="loader" id="spinner" style="display:none;"></span>
+</button>
   </fieldset>
 
 

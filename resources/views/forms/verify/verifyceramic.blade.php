@@ -34,7 +34,10 @@ Verify Ceramic#{{$artifact[0]["id"]}}
  
 
   <fieldset class="mt-2">
-    <button class="btn btn-success" type="submit" id="btnSubmit">Publish</button>
+      <button class="btn btn-success d-flex justify-content-evenly align-items-center" id="btnSubmit">
+        Publish
+        <span class="loader" id="spinner" style="display:none;"></span>
+      </button>
   </fieldset>
 
 
