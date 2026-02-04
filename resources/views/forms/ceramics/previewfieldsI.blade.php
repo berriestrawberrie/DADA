@@ -302,7 +302,7 @@
     <div class="col">
         <label for="interior_exterior" class="form-label">Interior Exterior
             <button type="button" class="btn btn-secondary btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Helpful field explainer here?">
-                <i class="fa-solid fa-question"></i></button>
+                <i class="fa-solid fa-circle-question"></i> </button>
         </label>
         <select class="form-control border" id="interior_exterior" name="interior_exterior" required>
             <option   value={{$artifact[0]["interior_exterior"]}}> {{$artifact[0]["interior_exterior"]}} </option>
