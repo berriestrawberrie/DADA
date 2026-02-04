@@ -132,6 +132,27 @@
         </label>
         <textarea class="form-control " id="notes"  name="notes" placeholder="(Optional)" rows="3"></textarea>
     </div><!--END COL-->
+    <div class="col-4">
+        <label for="status_code" class="form-label">Status Code </label>
+        <select class="form-select" name="status_code" id="status_code" required>
+                    <option value="0">--</option>
+                        <option >A - Undocumented Legacy</option>
+                        <option >B - Partially Documented</option>
+                        <option >C - Documented</option>
+                        <option >T - Teaching Collection</option>
+                        <option >R - Restricted / Sensitive</option>
+                    </select>
+        <label for="accession" class="form-label">Year of Recovery/Accession  </label>
+        <select class="form-select" name="accession" id="accession" required>
+                    <option value="0">--</option>
+                    @for ($year = 1900; $year <= now()->year; $year++)
+                        <option value="{{ $year }}">{{ $year }}</option>
+                    @endfor
+                    <option value="9999">Unknown</option>
+        </select>
+        
+        
+    </div>
 </div>
 <!--END ROW-->
 

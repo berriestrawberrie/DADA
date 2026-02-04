@@ -124,11 +124,32 @@
     <div class="col">
         <label for="notes" class="form-label">Notes 
             <button type="button" class="btn btn-secondary btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Field notes describe your artifact notes">
-            <i class="fa-solid fa-question"></i>
+            <i class="fa-solid fa-circle-question"></i>
           </button>
         </label>
         <textarea class="form-control border" id="notes"  name="notes" value="{{$artifact[0]["notes"]}}" rows="3"></textarea>
     </div><!--END COL-->
+    <div class="col-4">
+        <label for="status_code" class="form-label">Status Code </label>
+        <select class="form-select" name="status_code" id="status_code" required>
+                    <option value="{{$artifact[0]["status_code"]}}">{{$artifact[0]["status_code"]}}</option>
+                        <option >A - Undocumented Legacy</option>
+                        <option >B - Partially Documented</option>
+                        <option >C - Documented</option>
+                        <option >T - Teaching Collection</option>
+                        <option >R - Restricted / Sensitive</option>
+                    </select>
+        <label for="accession" class="form-label">Year of Recovery/Accession  </label>
+        <select class="form-select" name="accession" id="accession" required>
+                    <option value="{{$artifact[0]["accession"]}}">{{$artifact[0]["accession"]}}</option>
+                    @for ($year = 1900; $year <= now()->year; $year++)
+                        <option value="{{ $year }}">{{ $year }}</option>
+                    @endfor
+                    <option value="9999">Unknown</option>
+        </select>
+        
+        
+    </div>
 </div>
 <!--END ROW-->
 
