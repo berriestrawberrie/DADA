@@ -11,7 +11,7 @@ Bead Artifact Entry Form
 
 @section('content')
 @include('forms.preview.popup')
-<form class=" needs-validation" method="POST" action="{{url('submitBead/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
+<form id="artifactForm"  class=" needs-validation" method="POST" action="{{url('submitBead/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
   @csrf
   @method('POST')
   <!--GENERAL INFORMATION & SITE -->

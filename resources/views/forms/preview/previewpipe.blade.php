@@ -10,7 +10,7 @@ Tobacco Pipe Artifact Entry Form
 
 @section('content')
 @include('forms.preview.popup')
-<form class=" needs-validation" method="POST" action="{{url('submitTobaccoPipe/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
+<form id="artifactForm"  class=" needs-validation" method="POST" action="{{url('submitTobaccoPipe/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>

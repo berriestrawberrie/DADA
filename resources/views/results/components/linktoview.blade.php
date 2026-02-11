@@ -1,15 +1,15 @@
- <a href="viewartifact
-@if(str_contains('CE',$data->artifact_id))
+<a href="viewartifact
+@if(str_contains($data->artifact_id, 'CE'))
 /ceramic/{{$data->artifact_id}}
-@elseif(str_contains('BE',$data->artifact_id))
+@elseif(str_contains($data->artifact_id, 'BE'))
 /bead/{{$data->artifact_id}}
-@elseif(str_contains('BU',$data->artifact_id))
+@elseif(str_contains($data->artifact_id, 'BU'))
 /buckle/{{$data->artifact_id}}
-@elseif(str_contains('BN',$data->artifact_id))
+@elseif(str_contains($data->artifact_id, 'BN'))
 /button/{{$data->artifact_id}}
-@elseif(str_contains('GL',$data->artifact_id))
+@elseif(str_contains($data->artifact_id, 'GL'))
 /glass/{{$data->artifact_id}}
-@elseif(str_contains('TP',$data->artifact_id))
+@elseif(str_contains($data->artifact_id, 'TP'))
 /pipe/{{$data->artifact_id}}
 @else
 /utensil/{{$data->artifact_id}}

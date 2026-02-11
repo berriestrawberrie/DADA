@@ -62,13 +62,13 @@ class QueryController extends Controller
             $photoend = 2;
         }
 
-        //CLEAR NULL FROM ARTIFACT TYPES
+        /*CLEAR NULL FROM ARTIFACT TYPES
         $artifact_types = array_filter($request->artifact_types);
         //SET THE FIRST TABLE SEARCHED TO FIRST ARTIFACT TYPE SELECTED
         $table0 = $artifact_types[0] . '_tables';
 
 
-        //UNION BASED ON ARTIFACT SELECTION LENGHTS.
+        UNION BASED ON ARTIFACT SELECTION LENGHTS.
         switch (count($artifact_types)) {
             case 1:
                 $table0 = $artifact_types[0] . '_tables';
@@ -357,6 +357,20 @@ class QueryController extends Controller
                 back()->with('error', 'Artifact not available in query check QueryController {queryCollection}');
                 break;
         }
+                */
+
+
+        $table0 = 'ceramics_tables';
+        $merge = DB::table($table0)
+            ->select(DB::raw("$table0.material, 
+            $table0.collection_id,
+            $table0.artifact_id,
+            $table0.collection,
+            $table0.manufacturing_technique,
+            $table0.start_date,
+            $table0.end_date,
+            $table0.photo,
+            $table0.has_photo"));
 
         //RETURN BASED ON PAGINATION LIMIT
         if ($request->input('perpage') == "10") {

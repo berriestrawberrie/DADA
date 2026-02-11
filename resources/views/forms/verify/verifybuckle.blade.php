@@ -15,7 +15,7 @@ Buckle Artifact Entry Form :
 <span style="font-size: 40px; color: green; width: 50px; height:50px; padding: 5px;"><i class="fa-solid fa-user-tie"></i></span>
 </div>
 @include('forms.verify.popup')
-<form class=" needs-validation" method="POST" action="{{url('validateBuckle/'.$artifact[0]["artifact_id"])}}" novalidate enctype="multipart/form-data">
+<form id="artifactForm"  class=" needs-validation" method="POST" action="{{url('validateBuckle/'.$artifact[0]["artifact_id"])}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>

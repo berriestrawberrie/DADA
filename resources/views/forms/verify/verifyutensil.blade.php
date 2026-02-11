@@ -12,7 +12,7 @@ Utensil Artifact Entry Form
 
 @section('content')
 @include('forms.verify.popup')
-<form class=" needs-validation" method="POST" action="{{url('validateUtensil/'.$artifact[0]["artifact_id"])}}"  novalidate enctype="multipart/form-data">
+<form id="artifactForm"  class=" needs-validation" method="POST" action="{{url('validateUtensil/'.$artifact[0]["artifact_id"])}}"  novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>

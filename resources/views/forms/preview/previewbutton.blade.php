@@ -12,7 +12,7 @@ Button Artifact Entry Form
 
 @section('content')
 
-<form class=" needs-validation" method="POST" action="{{url('submitButton/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
+<form id="artifactForm"  class=" needs-validation" method="POST" action="{{url('submitButton/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
