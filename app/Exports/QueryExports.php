@@ -7,17 +7,20 @@ use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Illuminate\Support\Facades\DB;
 
 class QueryExports implements FromQuery, WithHeadings, WithMapping
 {
     use Exportable;
 
+    protected $table;
     protected $collection_id;
     protected $start;
     protected $end;
 
-    public function __construct(int $collection_id, int $start, int $end)
+    public function __construct(string $table ,int $collection_id, int $start, int $end)
     {
+        $this->table = $table; 
         $this->collection_id = $collection_id;
         $this->start = $start;
         $this->end = $end;
@@ -25,9 +28,10 @@ class QueryExports implements FromQuery, WithHeadings, WithMapping
 
     public function query()
     {
-        return Ceramic::query()
+        return DB::table($this->table)
             ->where('collection_id', $this->collection_id)
-            ->whereBetween('start_date', [$this->start, $this->end]);
+            ->whereBetween('start_date', [$this->start, $this->end])
+            ->orderBy('id');
     }
 
     public function headings(): array
@@ -35,10 +39,14 @@ class QueryExports implements FromQuery, WithHeadings, WithMapping
         return [
             'ID',
             'Collection ID',
+            'collection',
             'Start Date',
             'End Date',
-            'Name',
             'Created At',
+            'Material',
+            'status_code',
+            'accession',
+            'artifact_id'
         ];
     }
 
@@ -47,10 +55,14 @@ class QueryExports implements FromQuery, WithHeadings, WithMapping
         return [
             $row->id,
             $row->collection_id,
+            $row->collection,
             $row->start_date,
             $row->end_date,
-            $row->name,
             $row->created_at,
+            $row->material,
+            $row->status_code,
+            $row->accession,
+            $row->artifact_id,
         ];
     }
 }

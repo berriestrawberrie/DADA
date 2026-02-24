@@ -10,7 +10,7 @@
 
 <div>
     <h3>Search Results:</h3>
-    <a href="users/exportQuery/{{$collection_id}}/{{$start}}/{{$end}}"><button class="btn btn-success">Download</button></a>
+    <a href="users/exportQuery/{{$table0}}/{{$collection_id}}/{{$start}}/{{$end}}"><button class="btn btn-success">Download</button></a>
     {{$datas->links('pagination::bootstrap-5')}}
     <div class="pagination">
 

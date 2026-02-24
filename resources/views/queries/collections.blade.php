@@ -63,7 +63,11 @@ Query by Collection
         <div class="col ">
             <label for="artifact_types[]" class="form-label" >Artifact Types:<span class="text-danger">*</span></label>
             <div class="d-flex gap-4">
-               @include('queries.collectionsartifactcheck')
+               <select class="form-select" name="artifact_type" id="artifact_type" required>
+                    <option value="0" disabled selected>--select a type--</option>
+                    <option value="ceramics">Ceramics</option>
+                    <option value="pipe">Tobacco Pipes</option>
+                </select>
             </div>
             <div class="invalid-feedback">
                 Required field.
