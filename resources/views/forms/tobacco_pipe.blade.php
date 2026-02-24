@@ -9,7 +9,7 @@ Tobacco Pipe Artifact Entry Form
 @endsection
 
 @section('content')
-<form class=" needs-validation" method="POST" action="{{route('save.tobacco')}}" novalidate enctype="multipart/form-data">
+<form id="artifactForm" class=" needs-validation" method="POST" action="{{route('save.tobacco')}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
@@ -28,7 +28,10 @@ Tobacco Pipe Artifact Entry Form
   </fieldset>
 
   <fieldset class="mt-2">
-    <input type="submit" class="btn btn-primary">
+    <button class="btn btn-primary d-flex justify-content-evenly align-items-center" id="btnSubmit">
+    Save
+    <span class="loader" id="spinner" style="display:none;"></span>
+  </button>
   </fieldset>
 
 

@@ -23,7 +23,6 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item navfont" href="/query/bycollection">Collection Queries</a></li>
-              <li><a class="dropdown-item navfont" href="/query/byartifacttype">Artifact Queries</a></li>
 
             </ul>
           </li>

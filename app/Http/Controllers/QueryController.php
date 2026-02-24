@@ -62,13 +62,13 @@ class QueryController extends Controller
             $photoend = 2;
         }
 
-        /*CLEAR NULL FROM ARTIFACT TYPES
+        //CLEAR NULL FROM ARTIFACT TYPES
         $artifact_types = array_filter($request->artifact_types);
         //SET THE FIRST TABLE SEARCHED TO FIRST ARTIFACT TYPE SELECTED
         $table0 = $artifact_types[0] . '_tables';
 
 
-        UNION BASED ON ARTIFACT SELECTION LENGHTS.
+        //UNION BASED ON ARTIFACT SELECTION LENGHTS.
         switch (count($artifact_types)) {
             case 1:
                 $table0 = $artifact_types[0] . '_tables';
@@ -81,7 +81,8 @@ class QueryController extends Controller
                     $table0.start_date,
                     $table0.end_date,
                     $table0.photo,
-                    $table0.has_photo"));
+                    $table0.has_photo"))
+                    ->where("$table0.collection_id", $collection_id);
                 break;
             case 2:
                 $table1 = $artifact_types[1] . '_tables';
@@ -96,7 +97,8 @@ class QueryController extends Controller
                     $table1.end_date,
                     $table1.photo,
                     $table1.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $merge = DB::table($table0)
                     ->select(DB::raw("$table0.material, 
                         $table0.collection_id,
@@ -107,6 +109,7 @@ class QueryController extends Controller
                         $table0.end_date,
                         $table0.photo,
                         $table0.has_photo"))
+                    ->where("$table0.collection_id", $collection_id)
                     ->unionAll($data1);
                 break;
             case 3:
@@ -122,7 +125,8 @@ class QueryController extends Controller
                     $table1.end_date,
                     $table1.photo,
                     $table1.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $table2 = $artifact_types[2] . '_tables';
                 $data2 = DB::table($table2)
                     ->select(DB::raw(
@@ -135,7 +139,8 @@ class QueryController extends Controller
                     $table2.end_date,
                     $table2.photo,
                     $table2.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $merge = DB::table($table0)
                     ->select(DB::raw("$table0.material, 
                         $table0.collection_id,
@@ -146,6 +151,7 @@ class QueryController extends Controller
                         $table0.end_date,
                         $table0.photo,
                         $table0.has_photo"))
+                    ->where("$table0.collection_id", $collection_id)
                     ->unionAll($data1)
                     ->unionAll($data2);
                 break;
@@ -162,7 +168,8 @@ class QueryController extends Controller
                     $table1.end_date,
                     $table1.photo,
                     $table1.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $table2 = $artifact_types[2] . '_tables';
                 $data2 = DB::table($table2)
                     ->select(DB::raw(
@@ -175,7 +182,8 @@ class QueryController extends Controller
                     $table2.end_date,
                     $table2.photo,
                     $table2.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $table3 = $artifact_types[3] . '_tables';
                 $data3 = DB::table($table3)
                     ->select(DB::raw(
@@ -188,7 +196,8 @@ class QueryController extends Controller
                     $table3.end_date,
                     $table3.photo,
                     $table3.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $merge = DB::table($table0)
                     ->select(DB::raw("$table0.material, 
                         $table0.collection_id,
@@ -199,6 +208,7 @@ class QueryController extends Controller
                         $table0.end_date,
                         $table0.photo,
                         $table0.has_photo"))
+                        ->where("$table0.collection_id", $collection_id)
                     ->unionAll($data1)
                     ->unionAll($data2)
                     ->unionAll($data3);
@@ -216,7 +226,8 @@ class QueryController extends Controller
                     $table1.end_date,
                     $table1.photo,
                     $table1.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $table2 = $artifact_types[2] . '_tables';
                 $data2 = DB::table($table2)
                     ->select(DB::raw(
@@ -229,7 +240,8 @@ class QueryController extends Controller
                     $table2.end_date,
                     $table2.photo,
                     $table2.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $table3 = $artifact_types[3] . '_tables';
                 $data3 = DB::table($table3)
                     ->select(DB::raw(
@@ -242,7 +254,8 @@ class QueryController extends Controller
                     $table3.end_date,
                     $table3.photo,
                     $table3.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $table4 = $artifact_types[4] . '_tables';
                 $data4 = DB::table($table4)
                     ->select(DB::raw(
@@ -255,7 +268,8 @@ class QueryController extends Controller
                     $table4.end_date,
                     $table4.photo,
                     $table4.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $merge = DB::table($table0)
                     ->select(DB::raw("$table0.material, 
                         $table0.collection_id,
@@ -266,6 +280,7 @@ class QueryController extends Controller
                         $table0.end_date,
                         $table0.photo,
                         $table0.has_photo"))
+                    ->where("$table0.collection_id", $collection_id)
                     ->unionAll($data1)
                     ->unionAll($data2)
                     ->unionAll($data3)
@@ -284,7 +299,8 @@ class QueryController extends Controller
                     $table1.end_date,
                     $table1.photo,
                     $table1.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $table2 = $artifact_types[2] . '_tables';
                 $data2 = DB::table($table2)
                     ->select(DB::raw(
@@ -297,7 +313,8 @@ class QueryController extends Controller
                     $table2.end_date,
                     $table2.photo,
                     $table2.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $table3 = $artifact_types[3] . '_tables';
                 $data3 = DB::table($table3)
                     ->select(DB::raw(
@@ -310,7 +327,8 @@ class QueryController extends Controller
                     $table3.end_date,
                     $table3.photo,
                     $table3.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $table4 = $artifact_types[4] . '_tables';
                 $data4 = DB::table($table4)
                     ->select(DB::raw(
@@ -323,7 +341,8 @@ class QueryController extends Controller
                     $table4.end_date,
                     $table4.photo,
                     $table4.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $table5 = $artifact_types[5] . '_tables';
                 $data5 = DB::table($table5)
                     ->select(DB::raw(
@@ -336,7 +355,8 @@ class QueryController extends Controller
                     $table5.end_date,
                     $table5.photo,
                     $table5.has_photo"
-                    ));
+                    ))
+                    ->where("$table0.collection_id", $collection_id);
                 $merge = DB::table($table0)
                     ->select(DB::raw("$table0.material, 
                         $table0.collection_id,
@@ -347,6 +367,7 @@ class QueryController extends Controller
                         $table0.end_date,
                         $table0.photo,
                         $table0.has_photo"))
+                    ->where("$table0.collection_id", $collection_id)
                     ->unionAll($data1)
                     ->unionAll($data2)
                     ->unionAll($data3)
@@ -357,20 +378,7 @@ class QueryController extends Controller
                 back()->with('error', 'Artifact not available in query check QueryController {queryCollection}');
                 break;
         }
-                */
 
-
-        $table0 = 'ceramics_tables';
-        $merge = DB::table($table0)
-            ->select(DB::raw("$table0.material, 
-            $table0.collection_id,
-            $table0.artifact_id,
-            $table0.collection,
-            $table0.manufacturing_technique,
-            $table0.start_date,
-            $table0.end_date,
-            $table0.photo,
-            $table0.has_photo"));
 
         //RETURN BASED ON PAGINATION LIMIT
         if ($request->input('perpage') == "10") {

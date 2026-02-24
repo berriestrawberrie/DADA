@@ -32,6 +32,8 @@ class TobaccoPipeController extends Controller
             'collection' => $request->input('collection'),
             'collection_id' => $request->input('collection_id'),
             'entered_by' => $user,
+            'status_code' => $request->input('status_code'),
+            'accession' => $request->input('accession'),
             'completeness' => $request->input('completeness'),
             'artifact_count' => $request->input('artifact_count'),
             'non_plastic_inclu' => $request->input('non_plastic_inclu'),
@@ -87,7 +89,8 @@ class TobaccoPipeController extends Controller
 
         //GENERATE THE ARTIFACT ID
         $digit_3 = str_pad($pipe[0]["id"], 3, '0', STR_PAD_LEFT);
-        $artifact_id = '31DV' . $pipe[0]["collection_id"] . 'TP' . $digit_3;
+        $acode = substr($request->input('status_code'), 0, 1);
+        $artifact_id = '31MK' . $pipe[0]["collection_id"] .$acode .'-TP' . $digit_3;
 
         //PROCESS PHOTO SUBMISSION
         switch ($request->has_photo) {
@@ -132,12 +135,16 @@ class TobaccoPipeController extends Controller
                 return back()->with('error', 'Issue processing photo submission');
         } //END OF SWITCH
 
+    
+
         //REASSIGN THE pipe PROPRETIES TO THE INPUTS
         TobaccoPipe::where('token', $token)
             ->update([
                 'completeness' => $request->input('completeness'),
                 'artifact_count' => $request->input('artifact_count'),
                 'non_plastic_inclu' => $request->input('non_plastic_inclu'),
+                'status_code' => $request->input('status_code'),
+                'accession' => $request->input('accession'),
                 'material' => $request->input('material'),
                 'manufacturing_technique' => $request->input('manufacturing_technique'),
                 'glaze_type' => $request->input('glaze_type'),

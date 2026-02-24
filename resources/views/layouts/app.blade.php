@@ -27,7 +27,7 @@
 
         <!--CONTENT-->
 
-        <div class="position-relative  p-3">
+        <div class="position-relative  p-3 min-vh-100">
             @yield('content')
         </div>
         <!--END OF CONTENT-->

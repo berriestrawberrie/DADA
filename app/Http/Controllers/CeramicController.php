@@ -109,7 +109,8 @@ class CeramicController extends Controller
 
         //GENERATE THE ARTIFACT ID
         $digit_3 = str_pad($ceramic[0]["id"], 3, '0', STR_PAD_LEFT);
-        $artifact_id = '31DV' . $ceramic[0]["collection_id"] . 'CE' . $digit_3;
+        $acode = substr($request->input('status_code'), 0, 1);
+        $artifact_id = '31MK' . $pipe[0]["collection_id"] .$acode .'-CE' . $digit_3;
 
         //PROCESS PHOTO SUBMISSION
         switch ($request->has_photo) {

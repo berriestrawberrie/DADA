@@ -35,16 +35,18 @@ Add Artifact
  
     @for($i=0;$i< count($collections); $i++)
     <div style="display:none;"class="collect container flex-wrap  justify-content-start position-relative" id="{{$collections[$i]["id"]}}">
-     
-      @for($y=0; $y<count($art_types[$i]);$y++)
-      <a href="/getForm/{{$collections[$i]["id"]}}/{{$art_types[$i][$y]}}">
-          <div class="d-flex flex-wrap flex-column align-items-center rounded-3 p-2 " >   
-            @if($art_types[$i][$y]==="ceramic")           
-            <button class="btn btn-outline-dark fs-4 text-capitalize">{{$art_types[$i][$y]==="tobacco_pipe"? "Tobacco Pipe" :$art_types[$i][$y]}}</button>
-            @endif
+      <a href="/getForm/{{$collections[$i]["id"]}}/ceramic">
+          <div class="d-flex flex-wrap flex-column align-items-center rounded-3 p-2 " >
+            <button class="btn btn-outline-dark fs-4 text-capitalize">Ceramic</button>
           </div>
-        </a>
-      @endfor
+      </a>
+     
+      <a href="/getForm/{{$collections[$i]["id"]}}/tobacco_pipe">
+          <div class="d-flex flex-wrap flex-column align-items-center rounded-3 p-2 " >
+            <button class="btn btn-outline-dark fs-4 text-capitalize">Tobacco Pipe</button>
+          </div>
+      </a>
+
     </div>
     
    @endfor

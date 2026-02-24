@@ -19,6 +19,7 @@
     <table class="table table-striped text-center">
         <tr>
             <th>Artifact ID</td>
+            <th>Collection</th>
             <th>Material</th>
             <th>Manufacturing Technique</th>
             <th>Start Period</th>
@@ -31,6 +32,7 @@
             <td>
                 @include('results.components.linktoview')
             </td>
+            <td>{{$data->collection}}</td>
             <td>{{$data->material}}</td>
             <td>{{$data->manufacturing_technique}}</td>
             <td>{{$data->start_date}}</td>

@@ -10,6 +10,8 @@ class TobaccoPipe extends Model
     protected $fillable = [
         'entered_by',
         'created_at',
+        'accession',
+        'status_code',
         'completeness',
         'artifact_count',
         'collection',
