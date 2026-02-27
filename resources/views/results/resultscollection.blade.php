@@ -16,6 +16,9 @@
 
      </div>
 
+    @if(count($datas)===0)
+        <p class="text-center mt-3 mb-4">-- No artifacts found --</p>
+    @else
     <table class="table table-striped text-center">
         <tr>
             <th>Artifact ID</td>
@@ -60,6 +63,7 @@
         </tr>
         @endforeach
     </table>
+    @endif
 
     <a href="/query/bycollection"><button class="btn btn-primary">New Query</button></a>
 </div>
